@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  mongo:
+    build:
+      context: .
+      dockerfile: Dockerfile-mongo
+  redis:
+    image: redis
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-web
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mongo
+      - redis
