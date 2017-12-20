@@ -8,7 +8,8 @@ RUN mkdir -p /data/db2 \
 # Initialize logfile
 RUN touch /var/log/mongodb.log \
 	&& chmod 777 /var/log/mongodb.log
-    
+
+# Assumes that mongo dump is in ./dump    
 COPY dump /home/dump
 COPY mongo-restore.sh /home/mongo-restore.sh
 RUN chmod 777 /home/mongo-restore.sh

@@ -13,7 +13,8 @@
 
  RUN mkdir /www \
   && mkdir /www/log
-  
+ 
+ # This assumes that code is already in ./Sefaria-Project 
  COPY ./Sefaria-Project /www/
  COPY ./local_settings.py /www/sefaria/
  
@@ -32,7 +33,3 @@
   && npm install \
   && cp ./node/local_settings_example.json ./node/local_settings.json \
   && npm run build
-  
- # ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
- # ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
-    

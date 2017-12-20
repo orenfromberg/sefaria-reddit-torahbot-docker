@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Start mongodb with logging
 # --logpath    Without this mongod will output all log information to the standard output.
 # --logappend  Ensure mongod appends new entries to the end of the logfile. We create it first so that the below tail always finds something
