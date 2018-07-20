@@ -3,6 +3,8 @@
 import os.path
 relative_to_abs_path = lambda *x: os.path.join(os.path.dirname(
                                os.path.realpath(__file__)), *x)
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 OFFLINE = False
