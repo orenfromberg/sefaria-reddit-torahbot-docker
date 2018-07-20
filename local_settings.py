@@ -74,6 +74,7 @@ EMAIL_PORT = 1025
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 MONGO_HOST = "mongo"
+MONGO_PORT = 27017
 # Name of the MongoDB datebase to use.
 SEFARIA_DB = 'sefaria'
 # Leave user and password blank if not using Mongo Auth
@@ -87,6 +88,9 @@ SEFARIA_DB_PASSWORD = ''
 # SEARCH_INDEX_NAME = 'sefaria' # name of the ElasticSearch index to use
 SEARCH_HOST = "http://search.sefaria.org"
 SEARCH_ADMIN = "http://localhost:9200"
+SEARCH_ADMIN_USER = None  # if not None, use these credentials to access SEARCH_ADMIN
+SEARCH_ADMIN_PW = None
+SEARCH_ADMIN_K8S = "http://localhost:9200"
 SEARCH_INDEX_ON_SAVE = False # Whether to send texts and source sheet to Search Host for indexing after save
 SEARCH_INDEX_NAME = 'sefaria' # name of the ElasticSearch index to use
 
@@ -130,6 +134,18 @@ MIXPANEL_CODE = None
 RECAPTCHA_PUBLIC_KEY = "Dummy"
 RECAPTCHA_PRIVATE_KEY = "Dummy"
 
+# Multiserver
+MULTISERVER_ENABLED = False
+MULTISERVER_REDIS_SERVER = "127.0.0.1"
+MULTISERVER_REDIS_PORT = 6379
+MULTISERVER_REDIS_DB = 0
+MULTISERVER_REDIS_EVENT_CHANNEL = "msync"   # Message queue on Redis
+MULTISERVER_REDIS_CONFIRM_CHANNEL = "mconfirm"   # Message queue on Redis
+
+# OAUTH these fields dont need to be filled in. they are only required for oauth2client to __init__ successfully
+GOOGLE_OAUTH2_CLIENT_ID = ""
+GOOGLE_OAUTH2_CLIENT_SECRET = ""
+GOOGLE_MAPS_API_KEY = ""
 
 """ to use logging, in any module:
 # import the logging library
@@ -167,9 +183,6 @@ LOGGING = {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
         },
-        'require_debug_true': {
-            '()': 'sefaria.utils.log.RequireDebugTrue'
-        }
     },
     'handlers': {
         'default': {
@@ -187,18 +200,18 @@ LOGGING = {
             'maxBytes': 1024*1024*5, # 5 MB
             'backupCount': 5,
             'formatter':'verbose',
-            'filters': ['require_debug_true'],
+            'filters': [],
         },
         'console':{
             'level':'INFO',
             'class':'logging.StreamHandler',
             'formatter': 'simple',
-            'filters': ['require_debug_true'],
+            'filters': [],
         },
 
         'null': {
             'level':'INFO',
-            'class':'django.utils.log.NullHandler',
+            'class':'logging.NullHandler',
         },
 
         'mail_admins': {

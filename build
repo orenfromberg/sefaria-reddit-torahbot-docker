@@ -6,7 +6,7 @@ rm -rf !$/.git
 
 rm -rf dump_small.tar.gz
 rm -rf dump
-wget http://dev.sefaria.org/static/dump_small.tar.gz
+wget https://storage.googleapis.com/sefaria-mongo-backup/dump_small.tar.gz
 tar xzvf dump_small.tar.gz
 rm -rf dump_small.tar.gz
 

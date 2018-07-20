@@ -22,7 +22,7 @@
  
  RUN pip install -r requirements.txt \
   && cp -R ./locale/en/LC_MESSAGES/ /usr/local/lib/python2.7/site-packages/django/conf/locale/en \
-  && python manage.py syncdb --noinput
+  &&  python manage.py migrate
  
  ENV NVM_DIR /usr/local/nvm
 
