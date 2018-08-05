@@ -95,6 +95,10 @@ SEARCH_ADMIN_PW = None
 SEARCH_ADMIN_K8S = "http://localhost:9200"
 SEARCH_INDEX_ON_SAVE = False # Whether to send texts and source sheet to Search Host for indexing after save
 SEARCH_INDEX_NAME = 'sefaria' # name of the ElasticSearch index to use
+SEARCH_INDEX_NAME_TEXT = 'text'  # name of the ElasticSearch index to use
+SEARCH_INDEX_NAME_SHEET = 'sheet'
+SEARCH_INDEX_NAME_MERGED = 'merged'
+
 
 
 # Node Server
