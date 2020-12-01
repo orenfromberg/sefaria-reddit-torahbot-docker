@@ -3,14 +3,14 @@ version: '3'
 services:
   mongo:
     build:
-      context: .
-      dockerfile: Dockerfile-mongo
+      context: mongo/
   redis:
     image: redis
   web:
     build:
-      context: .
-      dockerfile: Dockerfile-web
+      context: web/
+    volumes:
+            - ./web/local_settings.py:/www/sefaria/local_settings.py
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"

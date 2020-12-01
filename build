@@ -1,13 +1,22 @@
 #!/bin/bash
 
-rm -rf ./Sefaria-Project
-git clone --depth=1 --branch=master https://github.com/Sefaria/Sefaria-Project.git Sefaria-Project
-rm -rf !$/.git
+# abort on any failure
+set -e
 
-rm -rf dump_small.tar.gz
-rm -rf dump
-wget https://storage.googleapis.com/sefaria-mongo-backup/dump_small.tar.gz
-tar xzvf dump_small.tar.gz
-rm -rf dump_small.tar.gz
+(
+cd web \
+&& rm -rf web/Sefaria-Project \
+&& git clone --depth=1 --branch=master https://github.com/Sefaria/Sefaria-Project.git Sefaria-Project \
+&& rm -rf !$/.git
+)
+
+(
+cd mongo \
+&& rm -f dump_small.tar.gz \
+&& rm -rf dump \
+&& wget https://storage.googleapis.com/sefaria-mongo-backup/dump_small.tar.gz \
+&& tar xzvf dump_small.tar.gz \
+&& rm -f dump_small.tar.gz
+)
 
 docker-compose build
