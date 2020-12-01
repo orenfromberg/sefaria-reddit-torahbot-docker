@@ -12,7 +12,7 @@
   && /usr/bin/sqlite3 /db/db.sqlite
 
  RUN mkdir /www \
-  && mkdir /www/log
+  && mkdir /log
  
  # This assumes that code is already in ./Sefaria-Project 
  COPY ./Sefaria-Project /www/

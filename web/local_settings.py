@@ -168,7 +168,7 @@ SEARCH_INDEX_NAME_MERGED = 'merged'
 USE_NODE = False
 NODE_HOST = "http://localhost:4040"
 NODE_TIMEOUT = 10
-# NODE_TIMEOUT_MONITOR = relative_to_abs_path("../log/forever/timeouts")
+# NODE_TIMEOUT_MONITOR = relative_to_abs_path("/log/forever/timeouts")
 
 SEFARIA_DATA_PATH = '/path/to/your/Sefaria-Data' # used for Data
 SEFARIA_EXPORT_PATH = '/path/to/your/Sefaria-Data/export' # used for exporting texts
@@ -287,7 +287,7 @@ LOGGING = {
         'default': {
             'level':'INFO',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': relative_to_abs_path('../log/sefaria.log'),
+            'filename': relative_to_abs_path('/log/sefaria.log'),
             'maxBytes': 1024*1024*5, # 5 MB
             'backupCount': 5,
             'formatter':'standard',
@@ -295,7 +295,7 @@ LOGGING = {
         'custom_debug' :{
             'level':'DEBUG',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': relative_to_abs_path('../log/debug.log'),
+            'filename': relative_to_abs_path('/log/debug.log'),
             'maxBytes': 1024*1024*5, # 5 MB
             'backupCount': 5,
             'formatter':'verbose',
@@ -321,7 +321,7 @@ LOGGING = {
         'request_handler': {
             'level':'INFO',
             'class':'logging.handlers.RotatingFileHandler',
-            'filename': relative_to_abs_path('../log/django_request.log'),
+            'filename': relative_to_abs_path('/log/django_request.log'),
             'maxBytes': 1024*1024*5, # 5 MB
             'backupCount': 20,
             'formatter':'standard',

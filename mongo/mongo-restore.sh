@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "restoring mongo dump"
+
 # Start mongodb with logging
 # --logpath    Without this mongod will output all log information to the standard output.
 # --logappend  Ensure mongod appends new entries to the end of the logfile. We create it first so that the below tail always finds something
@@ -16,7 +18,9 @@ while [[ $? -ne 0 && $COUNTER -lt 60 ]] ; do
 done
 
 # Restore from dump
-mongorestore --drop /home/dump
+cd /tmp \
+  && tar xzvf dump_small.tar.gz \
+  && mongorestore --drop /tmp/dump
 
 # Stop mongod
 mongod --dbpath /data/db2 --shutdown 

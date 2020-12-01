@@ -14,9 +14,10 @@ cd web \
 cd mongo \
 && rm -f dump_small.tar.gz \
 && rm -rf dump \
-&& wget https://storage.googleapis.com/sefaria-mongo-backup/dump_small.tar.gz \
-&& tar xzvf dump_small.tar.gz \
-&& rm -f dump_small.tar.gz
+&& wget https://storage.googleapis.com/sefaria-mongo-backup/dump_small.tar.gz
 )
 
 docker-compose build
+
+rm dump/dump_small.tar.gz
+
