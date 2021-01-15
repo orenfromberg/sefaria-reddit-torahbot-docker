@@ -5,7 +5,7 @@ set -e
 
 (
 cd web \
-&& rm -rf web/Sefaria-Project \
+&& rm -rf Sefaria-Project \
 && git clone --depth=1 --branch=master https://github.com/Sefaria/Sefaria-Project.git Sefaria-Project \
 && rm -rf !$/.git
 )
