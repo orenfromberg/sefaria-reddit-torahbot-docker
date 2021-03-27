@@ -19,5 +19,5 @@ cd mongo \
 
 docker-compose build
 
-rm dump/dump_small.tar.gz
+rm mongo/dump_small.tar.gz
 
