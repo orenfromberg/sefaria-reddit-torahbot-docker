@@ -6,7 +6,7 @@
  
  RUN apt-get -y update \ 
    && apt-get -y upgrade \
-   && apt-get install -y sqlite3 libsqlite3-dev gettext build-essential
+   && apt-get install -y sqlite3 libsqlite3-dev gettext cmake ninja-build python3-dev cython3 pybind11-dev libre2-dev
 
  RUN mkdir /db \
   && /usr/bin/sqlite3 /db/db.sqlite
@@ -20,9 +20,7 @@
  WORKDIR /www
 
  # install pyre2
- RUN pip install cython
- RUN cd /tmp && git clone https://github.com/google/re2.git && cd re2 && make install && rm -rf /tmp/re2
- RUN cd /tmp && git clone https://github.com/andreasvc/pyre2 && cd pyre2 && python setup.py install && rm -rf /tmp/pyre2
+ RUN pip install cython pyre2
  
  RUN pip install -r requirements.txt \
   && cp -R ./locale/en/LC_MESSAGES/ /usr/local/lib/python3.8/site-packages/django/conf/locale/en
