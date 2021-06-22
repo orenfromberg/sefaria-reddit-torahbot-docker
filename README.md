@@ -13,3 +13,6 @@ The `./run` script will bring up the containers and provision the local Sefaria 
 * `./run`
 * Browse to `http://0.0.0.0:8000`.
 
+# Tips
+In `web/local_settings.py`, change `DISABLE_AUTOCOMPLETER` to `True` for much faster startup time, at the cost of the fact that the frontend will not have the autocompleter. If you're not using the frontend, this shouldn't affect your usage.
+
