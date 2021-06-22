@@ -4,6 +4,8 @@ services:
   mongo:
     build:
       context: mongo/
+    ports:
+      - "27018:27017"
   redis:
     image: redis
   web:
