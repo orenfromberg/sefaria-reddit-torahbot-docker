@@ -1,4 +1,4 @@
- FROM python:2.7
+ FROM python:3.8
  
  ENV PYTHONUNBUFFERED 1
  ENV PYTHONPATH /www
@@ -6,29 +6,31 @@
  
  RUN apt-get -y update \ 
    && apt-get -y upgrade \
-   && apt-get install -y sqlite3 libsqlite3-dev gettext 
+   && apt-get install -y sqlite3 libsqlite3-dev gettext cmake ninja-build python3-dev cython3 pybind11-dev libre2-dev
 
  RUN mkdir /db \
   && /usr/bin/sqlite3 /db/db.sqlite
 
  RUN mkdir /www \
-  && mkdir /www/log
+  && mkdir /log
  
  # This assumes that code is already in ./Sefaria-Project 
  COPY ./Sefaria-Project /www/
- COPY ./local_settings.py /www/sefaria/
  
  WORKDIR /www
+
+ # install pyre2
+ RUN pip install cython pyre2
  
  RUN pip install -r requirements.txt \
-  && cp -R ./locale/en/LC_MESSAGES/ /usr/local/lib/python2.7/site-packages/django/conf/locale/en
+  && cp -R ./locale/en/LC_MESSAGES/ /usr/local/lib/python3.8/site-packages/django/conf/locale/en
  
  ENV NVM_DIR /usr/local/nvm
 
  # Install nvm with node and npm
- RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash \
+ RUN mkdir -p "$NVM_DIR" \
+  && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash \
   && . $NVM_DIR/nvm.sh \
   && nvm install node \  
   && npm install \
-  && cp ./node/local_settings_example.json ./node/local_settings.json \
   && npm run build

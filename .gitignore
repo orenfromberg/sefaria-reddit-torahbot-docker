@@ -1,2 +1,3 @@
-Sefaria-Project
-dump
+web/Sefaria-Project
+mongo/dump
+mongo/dump_small.tar.gz
