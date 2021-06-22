@@ -17,6 +17,17 @@ The `./run` script will bring up the containers and provision the local Sefaria 
 * The Mongo database is installed and populated with data when you run `/.build`
 * The database is accessible at `localhost:27018`. You can connect to it using the Mongo shell or a Mongo GUI (like Studio 3T)
 
+# Access Sefaria ORM
+* You can access Sefaria's ORM by either
+  * `cd ./web/Sefaria-Project && ./cli -i`. This will open an interactive ipython shell. From here you can access any class in [this file](https://github.com/Sefaria/Sefaria-Project/blob/master/sefaria/model/__init__.py). These classes represent Sefaria's ORM
+  * Add `DJANGO_SETTINGS_MODULE=sefaria.settings` to your envvars. Add `./web/Sefaria-Project` to your PYTHONPATH. Then in any new Python script, you can include this to access Sefaria's ORM:
+
+```python
+import django
+django.setup()
+from sefaria.model import *
+```
+
 # Tips
 In `web/local_settings.py`, change `DISABLE_AUTOCOMPLETER` to `True` for much faster startup time, at the cost of the fact that the frontend will not have the autocompleter. If you're not using the frontend, this shouldn't affect your usage.
 
