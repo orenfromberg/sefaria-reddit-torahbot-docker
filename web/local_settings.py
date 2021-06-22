@@ -206,6 +206,7 @@ USE_VARNISH_ESI = False
 
 # Prevent modification of Index records
 DISABLE_INDEX_SAVE = False
+DISABLE_AUTOCOMPLETER = False
 
 # Caching with Cloudflare
 CLOUDFLARE_ZONE = ""
