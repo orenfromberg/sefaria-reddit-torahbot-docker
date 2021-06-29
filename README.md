@@ -15,7 +15,7 @@ The `./run` script will bring up the containers and provision the local Sefaria 
 
 # Access Mongo Database
 * The Mongo database is installed and populated with data when you run `/.build`
-* The database is accessible at `localhost:27018`. You can connect to it using the Mongo shell or a Mongo GUI (like Studio 3T)
+* The database is accessible at `localhost:27017`. You can connect to it using the Mongo shell or a Mongo GUI (like Studio 3T)
 
 # Access Sefaria ORM
 * You can access Sefaria's ORM by first running `cd ./web/Sefaria-Project && pip install -r requirements.txt` and then either
