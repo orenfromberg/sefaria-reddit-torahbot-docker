@@ -179,13 +179,8 @@ SEFARIA_EXPORT_PATH = '/path/to/your/Sefaria-Data/export' # used for exporting t
 RTC_SERVER = '' # Root URL/IP of the server
 
 GOOGLE_TAG_MANAGER_CODE = 'you tag manager code here'
-GOOGLE_ANALYTICS_CODE = 'your google analytics code'
-GOOGLE_MAPS_API_KEY = None  # currently used for shavuot map
-MIXPANEL_CODE = 'you mixpanel code here'
 
-AWS_ACCESS_KEY = None
-AWS_SECRET_KEY = None
-S3_BUCKET = "bucket-name"
+HOTJAR_ID = None
 
 # Integration with a NationBuilder list
 NATIONBUILDER = False
@@ -244,6 +239,17 @@ SIMPLE_JWT = {
 # Key which identifies the Sefaria app as opposed to a user
 # using our API outside of the app. Mainly for registration
 MOBILE_APP_KEY = "MOBILE_APP_KEY"
+
+ENABLE_LINKER = False
+RAW_REF_MODEL_BY_LANG_FILEPATH = {
+    "en": None,
+    "he": None,
+}
+
+RAW_REF_PART_MODEL_BY_LANG_FILEPATH = {
+    "en": None,
+    "he": None,
+}
 
 LOGGING = {
     'version': 1,
