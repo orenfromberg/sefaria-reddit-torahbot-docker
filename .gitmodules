@@ -1,0 +1,3 @@
+[submodule "web/Sefaria-Project"]
+	path = web/Sefaria-Project
+	url = https://github.com/orenfromberg/sefaria-reddit-torahbot.git
