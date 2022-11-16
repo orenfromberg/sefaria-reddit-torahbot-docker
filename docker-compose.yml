@@ -8,14 +8,16 @@ services:
       - "27017:27017"
   redis:
     image: redis
-  web:
+  torahbot:
     build:
       context: web/
     volumes:
             - ./web/local_settings.py:/www/sefaria/local_settings.py
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-    ports:
-      - "8000:8000"
+    command: bash -c "python torahbot.py"
+    environment:
+      - REDDIT_CLIENT_ID
+      - REDDIT_CLIENT_SECRET
+      - REDDIT_PASSWORD
     depends_on:
       - mongo
       - redis
