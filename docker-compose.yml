@@ -15,9 +15,24 @@ services:
             - ./web/local_settings.py:/www/sefaria/local_settings.py
     command: bash -c "python torahbot.py"
     environment:
+      - REDIS_HOSTNAME=redis
       - REDDIT_CLIENT_ID
       - REDDIT_CLIENT_SECRET
       - REDDIT_PASSWORD
+    restart: on-failure
     depends_on:
       - mongo
       - redis
+  torahbot-worker:
+    build:
+      context: web/
+    volumes:
+            - ./web/local_settings.py:/www/sefaria/local_settings.py
+    command: bash -c "rq worker -u redis://redis:6379 -q"
+    environment:
+      - REDDIT_CLIENT_ID
+      - REDDIT_CLIENT_SECRET
+      - REDDIT_PASSWORD
+    restart: on-failure
+    depends_on:
+      - torahbot
