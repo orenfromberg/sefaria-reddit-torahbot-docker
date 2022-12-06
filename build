@@ -3,12 +3,12 @@
 # abort on any failure
 set -e
 
-(
-cd web \
-&& rm -rf Sefaria-Project \
-&& git clone --depth=1 --branch=master https://github.com/Sefaria/Sefaria-Project.git Sefaria-Project \
-&& rm -rf !$/.git
-)
+# (
+# cd web \
+# && rm -rf Sefaria-Project \
+# && git clone --depth=1 --branch=master https://github.com/orenfromberg/sefaria-reddit-torahbot.git Sefaria-Project \
+# && rm -rf !$/.git
+# )
 
 (
 cd mongo \
@@ -19,5 +19,5 @@ cd mongo \
 
 docker-compose build --pull
 
-rm mongo/dump_small.tar.gz
+# rm mongo/dump_small.tar.gz
 

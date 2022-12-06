@@ -1,5 +1,5 @@
 # first stage: import sefaria dump
-FROM mongo:6.0.2 AS stage1
+FROM mongo:4.4.13 AS stage1
 
 # Modify child mongo to use /data/db2 as dbpath (because /data/db wont persist the build)
 RUN mkdir -p /data/db2 \
@@ -20,7 +20,7 @@ RUN /tmp/mongo-restore.sh
 RUN chown -R mongodb /data/db2
 
 # state 2: copy the data we got from stage 1, but lose the dump files
-FROM mongo:6.0.2
+FROM mongo:4.4.13
 
 # configure mongo to use dump from stage 1
 RUN echo "dbpath = /data/db2" > /etc/mongodb.conf
