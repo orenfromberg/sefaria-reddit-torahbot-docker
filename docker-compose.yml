@@ -9,6 +9,7 @@ services:
   redis:
     image: redis:7.0.5
   torahbot:
+    container_name: torahbot
     build:
       context: web/
     volumes:
@@ -19,11 +20,15 @@ services:
       - REDDIT_CLIENT_ID
       - REDDIT_CLIENT_SECRET
       - REDDIT_PASSWORD
+      - REDDIT_USERNAME
+      - REDDIT_USER_AGENT
+      - REDDIT_SUB
     restart: on-failure
     depends_on:
       - mongo
       - redis
   torahbot-worker:
+    container_name: torahbot-worker
     build:
       context: web/
     volumes:
@@ -33,6 +38,8 @@ services:
       - REDDIT_CLIENT_ID
       - REDDIT_CLIENT_SECRET
       - REDDIT_PASSWORD
+      - REDDIT_USERNAME
+      - REDDIT_USER_AGENT
     restart: on-failure
     depends_on:
       - torahbot
