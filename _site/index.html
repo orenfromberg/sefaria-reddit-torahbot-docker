@@ -19,8 +19,7 @@
                         href="https://github.com/orenfromberg/sefaria-reddit-torahbot-docker/issues">GitHub</a>.</p>
                 <hr />
                 <h2>References</h2>
-                <!-- <p>Here you can explore the various titles on Sefaria that u/TorahBot can fetch references for.</p> -->
-                <p>Start typing the name of the title you would like to reference, and explore what Sefaria texts
+                <p>Start typing the title of the text you would like to reference, and explore what Sefaria texts
                     u/TorahBot can fetch.</p>
                 <div class="autocomplete" style="width:300px;">
                     <input id="myInput" type="text" name="myCountry" placeholder="e.g. Genesis">
@@ -319,7 +318,7 @@
 
                         var button = document.getElementById("copyButton")
                         button.innerHTML = "Copied!"
-                        setTimeout(function() {
+                        setTimeout(function () {
                             button.innerHTML = "Copy text"
                         }, 1000)
                     }
@@ -364,7 +363,7 @@
                                     resultCount++
                                 }
                                 /* limit the number of results to 10 for good performance */
-                                if(resultCount==10) {
+                                if (resultCount == 200) {
                                     break
                                 }
                             }
